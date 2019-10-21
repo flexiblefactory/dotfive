@@ -7,63 +7,63 @@ import React from 'react';
 import { observer } from "mobx-react"
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        padding: theme.spacing(3, 2),
-        margin: theme.spacing(1),
-    },
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: 120,
-        display: 'block'
-    },
-    textField: {
-        margin: theme.spacing(1),
-    },
-    dense: {
-        marginTop: theme.spacing(2),
-    },
-    menu: {
-        width: 200,
-    },
+  root: {
+    padding: theme.spacing(3, 2),
+    margin: theme.spacing(1),
+  },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+    display: 'block'
+  },
+  textField: {
+    margin: theme.spacing(1),
+  },
+  dense: {
+    marginTop: theme.spacing(2),
+  },
+  menu: {
+    width: 200,
+  },
 }));
-export default observer(({ cats, newCategoryState: [values, setValues] })=> {
-    const classes = useStyles();
+export default observer(({ cats, newCategoryState: [values, setValues] }) => {
+  const classes = useStyles();
 
-    const handleChange = name => event => {  
-        setValues({ ...values, [name]: event.target.value || null });
-    };
+  const handleChange = name => event => {
+    setValues({ ...values, [name]: event.target.value || null });
+  };
 
-    return (
-        <React.Fragment>
-            <FormControl className={classes.formControl}>
-                <TextField
-                    id="standard-name"
-                    label="Name"
-                    className={classes.textField}
-                    value={values.label}
-                    onChange={handleChange('label')}
-                    margin="normal"
-                />
-            </FormControl>
-            <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="cat-parent">
-                    Parent category
+  return (
+    <React.Fragment>
+      <FormControl className={classes.formControl}>
+        <TextField
+          id="standard-name"
+          label="Name"
+          className={classes.textField}
+          value={values.label}
+          onChange={handleChange('label')}
+          margin="normal"
+        />
+      </FormControl>
+      <FormControl className={classes.formControl}>
+        <InputLabel htmlFor="cat-parent">
+          Parent category
             </InputLabel>
-                <Select
-                    native
-                    value={values.parent || ''}
-                    onChange={handleChange('parent')}
-                    inputProps={{
-                        name: 'parent',
-                        id: 'cat-parent',
-                    }}>
-                    {[{ id: false, label: 'None' }, ...cats]
-                        .map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
-                </Select>
-            </FormControl>
-        </React.Fragment>)
+        <Select
+          native
+          value={values.parent || ''}
+          onChange={handleChange('parent')}
+          inputProps={{
+            name: 'parent',
+            id: 'cat-parent',
+          }}>
+          {[{ id: false, label: 'None' }, ...cats]
+            .map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
+        </Select>
+      </FormControl>
+    </React.Fragment>)
 })
