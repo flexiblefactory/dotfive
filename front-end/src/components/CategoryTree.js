@@ -32,7 +32,7 @@ export default observer(({ newCat, setNewCat, appState, newItem, setNewItem, new
         defaultExpandIcon={<ChevronRightIcon />} >
         <Category onSelect={(cat) => {
           appState.selectedCategory = cat;
-          setNewItem({ ...newItem, category: cat.id, label: 'foo' })
+          setNewItem({ ...newItem, category: cat.id, label: '' })
         }} cats={cats} cat={{ id: null, label: 'Categories' }} />
       </TreeView>
     </Paper>

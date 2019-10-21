@@ -33,9 +33,8 @@ const useStyles = makeStyles(theme => ({
 export default observer(({ cats, newCategoryState: [values, setValues] })=> {
     const classes = useStyles();
 
-    const handleChange = name => event => {
-        console.log(name, event.target.value)
-        setValues({ ...values, [name]: event.target.value });
+    const handleChange = name => event => {  
+        setValues({ ...values, [name]: event.target.value || null });
     };
 
     return (
@@ -62,7 +61,7 @@ export default observer(({ cats, newCategoryState: [values, setValues] })=> {
                         name: 'parent',
                         id: 'cat-parent',
                     }}>
-                    {[{ id: 'null', label: 'None' }, ...cats]
+                    {[{ id: '', label: 'None' }, ...cats]
                         .map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
                 </Select>
             </FormControl>
