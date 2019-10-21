@@ -4,6 +4,7 @@ import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import React from 'react';
+import { observer } from "mobx-react"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles(theme => ({
         width: 200,
     },
 }));
-export default function CategoryForm({ cats, newCategoryState: [values, setValues] }) {
+export default observer(({ cats, newCategoryState: [values, setValues] })=> {
     const classes = useStyles();
 
     const handleChange = name => event => {
@@ -66,4 +67,4 @@ export default function CategoryForm({ cats, newCategoryState: [values, setValue
                 </Select>
             </FormControl>
         </React.Fragment>)
-}
+})
