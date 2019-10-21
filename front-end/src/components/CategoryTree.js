@@ -17,6 +17,7 @@ export default observer(({ newCat, setNewCat, appState, newItem, setNewItem, new
     <Paper className={classes.paper}>
       <ModalForm
         save={() => {
+          if (!newCat.label) return;
           cats.post({ label: newCat.label, parent: newCat.parent ? parseInt(newCat.parent) : null });
           setNewCat({ ...newCat, label: '' });
         }}

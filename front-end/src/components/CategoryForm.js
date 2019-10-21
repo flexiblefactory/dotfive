@@ -61,7 +61,7 @@ export default observer(({ cats, newCategoryState: [values, setValues] })=> {
                         name: 'parent',
                         id: 'cat-parent',
                     }}>
-                    {[{ id: '', label: 'None' }, ...cats]
+                    {[{ id: false, label: 'None' }, ...cats]
                         .map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
                 </Select>
             </FormControl>
