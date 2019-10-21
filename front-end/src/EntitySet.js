@@ -60,7 +60,7 @@ export default decorate(class EntitySet {
 
   _updated(msg) {
     set(this.items.get(msg.id), msg.data)
-    return msg.data.label
+    return msg.data.label || '';
   }
 
   get all() {
