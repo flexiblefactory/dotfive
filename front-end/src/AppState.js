@@ -20,6 +20,7 @@ class AppState {
   }
 
   get allowedParentsForSelectedCategory() {
+    //we don't want to be able to create cyclic structures in the graph
     const descendantsAndSelf = new Set(descendants(this.selectedCategory, this.cats))
     return this.cats.all.filter(c => !descendantsAndSelf.has(c))
   }
