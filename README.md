@@ -152,7 +152,15 @@ local means of connecting to it exists?
 23. What was the most useful feature that was added to the latest version of your chosen language?
  Please include a snippet of code that shows how you've used it.
 
-> Set. Now I can do `new Set([1,2,3])` instead of using `.reduce`. `.reduce` is one of my favourites too, although it has been around forever. I use it a lot more these days though. But for the very common operation of turning an array into a fast lookup, this is a cleaner, more explicit syntax.
+> ## Array spread:
+```
+const children = (cat, cats) => cats.all.filter(c => c.parent === cat.id)
+
+const catAndDescendants = (cat, cats) => [ cat,
+  ...children(cat, cats).reduce((a, c) => [...a, ...descendants(c, cats)], [])
+]
+
+```
 
 24. Have you watched Mr Robot? (The dev team want to know!)
 
