@@ -6,6 +6,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import { observer } from "mobx-react"
 import ItemForm from './ItemForm';
 import { useStyles } from '../styles';
+import EditDeletePanel from './EditDeletePanel';
 
 export default observer(({ item, editItemState, save, handleClick, remove, cats }) => {
   const classes = useStyles();
@@ -15,25 +16,16 @@ export default observer(({ item, editItemState, save, handleClick, remove, cats 
       {item.label}
     </Typography>
     <div className={classes.buttonPanel}>
-      <ModalForm
-        save={save}
-        button={handleClickOpen => (
-          <IconButton
-            onClick={()=>handleClick(handleClickOpen)}
-            aria-label="edit"
-            color="primary">
-            <EditIcon />
-          </IconButton>
-        )} title="Edit item" description="">
-        <ItemForm newItemState={editItemState} cats={cats} />
-      </ModalForm>
-      <ModalForm
-        save={remove}
-        button={handleClickOpen => (
-          <IconButton onClick={handleClickOpen} aria-label="delete" color="primary">
-            <DeleteIcon />
-          </IconButton>
-        )} title="Delete category" description="Are you sure?">
-      </ModalForm>
+
+    <EditDeletePanel
+                        title="Delete item"
+                        handleClick={(handleClickOpen)=>handleClick(handleClickOpen)}
+                        onEdit={save}
+                        onDelete={remove}>
+                        <ItemForm newItemState={editItemState} cats={cats} />
+                      </EditDeletePanel>
+
+
+      
     </div>
   </Paper>)})
