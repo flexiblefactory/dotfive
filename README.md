@@ -189,12 +189,15 @@ Yes!
 
 ● What would you add to your solution if you had more time?
 
+Would load items for a category only when a category is selected.
 Tagging, images.
 
 ● Would you choose different technologies if this were to become a reliable
 enterprise system? Why? Or, why not?
 
 Would not use Sails disk provider as this is only meant for development.
+
+
 
 
 
